@@ -111,3 +111,7 @@ position = Vector2(3.05176e-05, -4.76837e-07)
 scale = Vector2(7.36, 7.84)
 shape = SubResource("CircleShape2D_pr1vx")
 debug_color = Color(0.842031, 0.345288, 0.432704, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
