@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b67qjuigi4dvn"]
+[gd_scene load_steps=27 format=3 uid="uid://b67qjuigi4dvn"]
 
 [ext_resource type="Script" path="res://player_ship/ship.gd" id="1_mqtmi"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="2_ehosm"]
@@ -17,6 +17,9 @@
 [ext_resource type="Script" path="res://components/destroyed_component.gd" id="14_tctej"]
 [ext_resource type="AudioStream" uid="uid://brhxk3b8tymrd" path="res://sounds/laser_sound.wav" id="16_skfy5"]
 [ext_resource type="Script" path="res://components/variable_pitch_audio_stream_player.gd" id="16_u0wy7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wqap6"]
+radius = 65.81
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h24ni"]
 animations = [{
@@ -110,6 +113,12 @@ script = ExtResource("1_mqtmi")
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("2_mw50h")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2(0.56099, 1.00288)
+shape = SubResource("CircleShape2D_wqap6")
 
 [node name="Anchor" type="Node2D" parent="."]
 

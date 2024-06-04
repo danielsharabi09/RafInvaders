@@ -13,7 +13,8 @@ extends Node
 
 # This is the function that will activate this component
 func tween_scale() -> void:
-	print("scale")
+	pass
+	#print("scale")
 	# We are going to scale the sprite using a tween (so we can make is smooth)
 	## First we create the tween and set it's transition type and easing type
 	#var tween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
