@@ -23,5 +23,5 @@ func handle_spawn(coin_scene: PackedScene, timer: Timer, time_offset: float = 1.
 	spawner_component.scene = coin_scene
 	spawner_component.spawn(Vector2(randf_range(margin, screen_width-margin), -16))
 	var spawn_rate = time_offset / (0.5 + (game_stats.score * 0.01))
-	timer.start(spawn_rate + randf_range(0.25, 0.5))
+	timer.start(3 + randf_range(0.25, 0.5))
 	#timer.start(10)

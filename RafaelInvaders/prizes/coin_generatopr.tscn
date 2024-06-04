@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://prizes/coin_generatopr.gd" id="1_ts5s3"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="2_0ed8p"]
-[ext_resource type="PackedScene" path="res://prizes/coin.tscn" id="2_kg5g5"]
+[ext_resource type="PackedScene" uid="uid://cduydrdm25whw" path="res://prizes/coin.tscn" id="2_kg5g5"]
 [ext_resource type="Resource" uid="uid://bfkadquef4i33" path="res://game_stats.tres" id="3_gp4qj"]
 
 [node name="CoinGenerator" type="Node2D"]

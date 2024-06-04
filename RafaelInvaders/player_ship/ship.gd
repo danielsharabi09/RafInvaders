@@ -12,13 +12,20 @@ extends Node2D
 
 
 func _ready() -> void:
-	fire_rate_timer.timeout.connect(fire_lasers)
+	#fire_rate_timer.timeout.connect(fire_lasers)
+	pass
+	
+func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("Space"):
+		fire_lasers()
+
 
 func fire_lasers() -> void:
 	variable_pitch_audio_stream_player.play_with_variance()
 	spawner_component.spawn(left_muzzle.global_position)
 	spawner_component.spawn(right_muzzle.global_position)
 	scale_component.tween_scale()
+
 
 func _process(delta: float) -> void:
 	animate_the_ship()

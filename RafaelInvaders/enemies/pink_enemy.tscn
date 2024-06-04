@@ -1,52 +1,24 @@
-[gd_scene load_steps=18 format=3 uid="uid://dp3vlp6van6sj"]
+[gd_scene load_steps=14 format=3 uid="uid://dp3vlp6van6sj"]
 
 [ext_resource type="PackedScene" uid="uid://d3fdd3hdc7p1q" path="res://enemies/enemy.tscn" id="1_jk7gg"]
-[ext_resource type="Texture2D" uid="uid://dkepop1o0hbjd" path="res://assets/pink_enemy.png" id="2_6usaw"]
 [ext_resource type="Script" path="res://enemies/pink_enemy.gd" id="2_us7mv"]
+[ext_resource type="Texture2D" uid="uid://cgkfopgx0tqpa" path="res://assets/Hero_GrenadeLauncher_Fire01.png" id="3_idajx"]
 [ext_resource type="Script" path="res://components/state_component.gd" id="3_n6dqc"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="4_3sbhk"]
+[ext_resource type="Texture2D" uid="uid://blipb5oliv4hl" path="res://assets/Hero_GrenadeLauncher_Fire02.png" id="4_ih6nq"]
 [ext_resource type="Script" path="res://components/border_bounce_component.gd" id="5_7l2tx"]
 [ext_resource type="Script" path="res://components/timed_state_componoent.gd" id="6_ls12o"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="8_bkokf"]
 [ext_resource type="PackedScene" uid="uid://pvkhxs60jkek" path="res://projectiles/pink_enemy_projectile.tscn" id="9_2lu8v"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5whhj"]
-atlas = ExtResource("2_6usaw")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v374k"]
-atlas = ExtResource("2_6usaw")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h0tt6"]
-atlas = ExtResource("2_6usaw")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yc8h6"]
-atlas = ExtResource("2_6usaw")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opksw"]
-atlas = ExtResource("2_6usaw")
-region = Rect2(64, 0, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_n464e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5whhj")
+"texture": ExtResource("3_idajx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v374k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h0tt6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yc8h6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_opksw")
+"texture": ExtResource("4_ih6nq")
 }],
 "loop": true,
 "name": &"default",
@@ -63,10 +35,11 @@ radius = 6.0
 script = ExtResource("2_us7mv")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(5, -7)
+scale = Vector2(0.601563, 0.523438)
 sprite_frames = SubResource("SpriteFrames_n464e")
 autoplay = "default"
-frame = 4
-frame_progress = 0.763777
+frame_progress = 0.0896132
 
 [node name="StatsComponent" parent="." index="1"]
 health = 6

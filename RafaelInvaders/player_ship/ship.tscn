@@ -1,11 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://bkgijybqxmxd8"]
+[gd_scene load_steps=31 format=3 uid="uid://bkgijybqxmxd8"]
 
 [ext_resource type="Script" path="res://player_ship/ship.gd" id="1_mqtmi"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="2_ehosm"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="2_mw50h"]
+[ext_resource type="Texture2D" uid="uid://hy1tjru58y5e" path="res://assets/flip_planes.png" id="3_grnp0"]
+[ext_resource type="Texture2D" uid="uid://bqwubxqwb7dsi" path="res://assets/planes.png" id="3_ovjyd"]
 [ext_resource type="Script" path="res://components/move_input_component.gd" id="3_xfx7j"]
 [ext_resource type="Resource" uid="uid://bo3ig3arec1h6" path="res://player_ship/ship_move_stats.tres" id="4_dgl6u"]
-[ext_resource type="Texture2D" uid="uid://csjmvnvwe1y1r" path="res://new_assests/Hulls_Color_B/Hull_01.png" id="4_nc82p"]
 [ext_resource type="Script" path="res://components/position_clamp_component.gd" id="5_vqpx2"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="7_26x81"]
 [ext_resource type="PackedScene" uid="uid://3c0cr3714r4k" path="res://projectiles/laser.tscn" id="8_ypby4"]
@@ -18,11 +19,23 @@
 [ext_resource type="AudioStream" uid="uid://brhxk3b8tymrd" path="res://sounds/laser_sound.wav" id="16_skfy5"]
 [ext_resource type="Script" path="res://components/variable_pitch_audio_stream_player.gd" id="16_u0wy7"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_53gwr"]
+atlas = ExtResource("3_grnp0")
+region = Rect2(0, 0, 483, 407)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtowf"]
+atlas = ExtResource("3_ovjyd")
+region = Rect2(2500, 0, 500, 418)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfegl"]
+atlas = ExtResource("3_grnp0")
+region = Rect2(0, 425, 447, 408)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_h24ni"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_nc82p")
+"texture": SubResource("AtlasTexture_53gwr")
 }],
 "loop": true,
 "name": &"bank_left",
@@ -30,7 +43,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_nc82p")
+"texture": SubResource("AtlasTexture_rtowf")
 }],
 "loop": true,
 "name": &"bank_right",
@@ -38,7 +51,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_nc82p")
+"texture": SubResource("AtlasTexture_xfegl")
 }],
 "loop": true,
 "name": &"center",
@@ -116,17 +129,17 @@ script = ExtResource("2_mw50h")
 [node name="Anchor" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor"]
-position = Vector2(-5.96046e-08, 1)
-scale = Vector2(0.0917969, 0.0800781)
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.0698408, 0.0593762)
 sprite_frames = SubResource("SpriteFrames_h24ni")
-animation = &"bank_right"
+animation = &"center"
 autoplay = "center"
 
 [node name="FlameAnimatedSprite" type="AnimatedSprite2D" parent="Anchor"]
 unique_name_in_owner = true
-position = Vector2(0, 16)
+position = Vector2(-1, 20)
 sprite_frames = SubResource("SpriteFrames_u31ju")
-animation = &"center"
+animation = &"bank_left"
 autoplay = "center"
 
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
@@ -186,8 +199,8 @@ destroy_effect_spawner_component = NodePath("../ExplosionSpawnerComponent")
 stream = ExtResource("16_skfy5")
 bus = &"Sounds"
 script = ExtResource("16_u0wy7")
+auto_play_with_variance = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_c0wvo")
