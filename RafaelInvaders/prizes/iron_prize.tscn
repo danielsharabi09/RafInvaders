@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8b5tg32js26v"]
+
+[ext_resource type="PackedScene" uid="uid://d3fdd3hdc7p1q" path="res://enemies/enemy.tscn" id="1_s2rir"]
+[ext_resource type="Texture2D" uid="uid://b08pxqt41tkh0" path="res://assets/coin_11.png" id="2_706ew"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dgwsu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_706ew")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ahfvi"]
+radius = 6.7082
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3jkdc"]
+radius = 6.0
+
+[node name="Coin" instance=ExtResource("1_s2rir")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, 0)
+scale = Vector2(0.0769043, 0.0795085)
+sprite_frames = SubResource("SpriteFrames_dgwsu")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.128234
+
+[node name="StatsComponent" parent="." index="1"]
+health = 3
+
+[node name="MoveComponent" parent="." index="2"]
+velocity = Vector2(0, 40)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+position = Vector2(7.62939e-06, 1)
+scale = Vector2(0.8, 0.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_ahfvi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_3jkdc")
