@@ -22,10 +22,8 @@ func fire_lasers() -> void:
 			const missile = preload("res://rafael/iron_missile.tscn")
 			var new_missile = missile.instantiate()
 			add_child(new_missile)
-			new_missile.update_target(enemy.global_position)
-			
+			new_missile.update_target(enemy.global_position)	
 	scale_component.tween_scale()
-	#fire_rate_timer.timeout.disconnect(fire_lasers)
 
 func _process(delta: float) -> void:
 	#animate_the_ship()
@@ -41,4 +39,9 @@ func animate_the_ship() -> void:
 	else:
 		animated_sprite_2d.play("center")
 		flame_animated_sprite.play("center")
+
+
+
+func _on_timer_timeout():
+	queue_free()
 

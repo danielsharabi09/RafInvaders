@@ -22,6 +22,7 @@ func fire_lasers() -> void:
 
 func _process(delta: float) -> void:
 	animate_the_ship()
+	#print()
 
 func animate_the_ship() -> void:
 	if move_component.velocity.x < 0:

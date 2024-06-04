@@ -1,9 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://cob1acfpjlm8c"]
+[gd_scene load_steps=16 format=3 uid="uid://cob1acfpjlm8c"]
 
 [ext_resource type="Script" path="res://rafael/iron_dome.gd" id="1_au4bo"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="2_ih7b0"]
-[ext_resource type="Texture2D" uid="uid://dptm80evqffkw" path="res://new_assests/Hulls_Color_D/Hull_02.png" id="4_4bx0x"]
-[ext_resource type="Texture2D" uid="uid://cmfx7uwiptxam" path="res://assets/ship_flame.png" id="4_50o60"]
+[ext_resource type="Texture2D" uid="uid://cn5yja153j0qw" path="res://assets/iron_dome.png" id="3_kax11"]
 [ext_resource type="PackedScene" uid="uid://cvky6op0ie1dw" path="res://rafael/iron_missile.tscn" id="7_fsetf"]
 [ext_resource type="Script" path="res://components/position_clamp_component.gd" id="8_4nmx8"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="9_8y5x4"]
@@ -18,7 +17,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_4bx0x")
+"texture": ExtResource("3_kax11")
 }],
 "loop": true,
 "name": &"bank_left",
@@ -26,7 +25,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_4bx0x")
+"texture": ExtResource("3_kax11")
 }],
 "loop": true,
 "name": &"bank_right",
@@ -34,75 +33,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_4bx0x")
+"texture": ExtResource("3_kax11")
 }],
 "loop": true,
 "name": &"center",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xn5im"]
-atlas = ExtResource("4_50o60")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8vucf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_36k3p"]
-atlas = ExtResource("4_50o60")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o7ayw"]
-atlas = ExtResource("4_50o60")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nitdh"]
-atlas = ExtResource("4_50o60")
-region = Rect2(32, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4htw3"]
-atlas = ExtResource("4_50o60")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_osne7"]
-atlas = ExtResource("4_50o60")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_u31ju"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xn5im")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_36k3p")
-}],
-"loop": true,
-"name": &"bank_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o7ayw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nitdh")
-}],
-"loop": true,
-"name": &"bank_right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4htw3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_osne7")
-}],
-"loop": true,
-"name": &"center",
-"speed": 10.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjm6l"]
-size = Vector2(27.038, 29.5918)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xauin"]
+radius = 13.4535
 
 [node name="IronDome" type="Node2D"]
 script = ExtResource("1_au4bo")
@@ -113,24 +54,18 @@ script = ExtResource("2_ih7b0")
 [node name="Anchor" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor"]
-position = Vector2(-5.96046e-08, 1)
-scale = Vector2(0.0917969, 0.0800781)
+position = Vector2(34, -1)
+scale = Vector2(0.184361, 0.19202)
 sprite_frames = SubResource("SpriteFrames_h24ni")
-animation = &"bank_left"
+animation = &"center"
 autoplay = "center"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor/AnimatedSprite2D"]
+visible = false
 position = Vector2(-5.96046e-08, 1)
 scale = Vector2(0.0917969, 0.0800781)
 sprite_frames = SubResource("SpriteFrames_h24ni")
 animation = &"bank_left"
-autoplay = "center"
-
-[node name="FlameAnimatedSprite" type="AnimatedSprite2D" parent="Anchor"]
-unique_name_in_owner = true
-position = Vector2(0, 16)
-sprite_frames = SubResource("SpriteFrames_u31ju")
-animation = &"center"
 autoplay = "center"
 
 [node name="PositionClampComponent" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
@@ -138,7 +73,7 @@ script = ExtResource("8_4nmx8")
 actor = NodePath("..")
 
 [node name="CenterMuzzle" type="Marker2D" parent="."]
-position = Vector2(-0.189907, -3.87756)
+position = Vector2(-1.06773, -17.1778)
 scale = Vector2(146.815, -1.05886)
 
 [node name="SpawnerComponent" type="Node2D" parent="."]
@@ -168,20 +103,20 @@ stream = ExtResource("16_kke0s")
 bus = &"Sounds"
 script = ExtResource("17_m3jdq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-5.96046e-08, 1)
-scale = Vector2(0.0917969, 0.0800781)
-sprite_frames = SubResource("SpriteFrames_h24ni")
-animation = &"bank_left"
-autoplay = "center"
-
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("14_xo12r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(2.5, -3)
+material = SubResource("CanvasItemMaterial_8vucf")
+position = Vector2(-4, -11)
 scale = Vector2(7.36, 7.84)
-shape = SubResource("RectangleShape2D_cjm6l")
+shape = SubResource("CircleShape2D_xauin")
 debug_color = Color(0.842031, 0.345288, 0.432704, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

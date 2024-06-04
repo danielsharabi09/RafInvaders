@@ -1,0 +1,113 @@
+[gd_scene load_steps=15 format=3 uid="uid://ucpkwcs5tw0"]
+
+[ext_resource type="Script" path="res://rafael/iron_dome.gd" id="1_j4rtv"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="2_1a0er"]
+[ext_resource type="Texture2D" uid="uid://dgftkw36wlatb" path="res://assets/david_sling.png" id="3_1yrlx"]
+[ext_resource type="Script" path="res://components/position_clamp_component.gd" id="4_4itts"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="5_4xh80"]
+[ext_resource type="PackedScene" uid="uid://cvky6op0ie1dw" path="res://rafael/iron_missile.tscn" id="6_kvihq"]
+[ext_resource type="Script" path="res://components/scale_component.gd" id="7_lodr7"]
+[ext_resource type="PackedScene" uid="uid://c7nmpf2186t1j" path="res://effects/explosion_effect.tscn" id="8_7dggn"]
+[ext_resource type="Script" path="res://components/destroyed_component.gd" id="9_oj5s6"]
+[ext_resource type="AudioStream" uid="uid://brhxk3b8tymrd" path="res://sounds/laser_sound.wav" id="10_wjj1n"]
+[ext_resource type="Script" path="res://components/variable_pitch_audio_stream_player.gd" id="11_3jap3"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="12_a0g0o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h24ni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1yrlx")
+}],
+"loop": true,
+"name": &"bank_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1yrlx")
+}],
+"loop": true,
+"name": &"bank_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1yrlx")
+}],
+"loop": true,
+"name": &"center",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pr1vx"]
+radius = 25.1298
+
+[node name="DavidSling" type="Node2D"]
+script = ExtResource("1_j4rtv")
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("2_1a0er")
+
+[node name="Anchor" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor"]
+position = Vector2(28, 6)
+scale = Vector2(0.166063, 0.154669)
+sprite_frames = SubResource("SpriteFrames_h24ni")
+animation = &"bank_left"
+autoplay = "center"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor/AnimatedSprite2D"]
+visible = false
+position = Vector2(-5.96046e-08, 1)
+scale = Vector2(0.0917969, 0.0800781)
+sprite_frames = SubResource("SpriteFrames_h24ni")
+animation = &"center"
+autoplay = "center"
+
+[node name="PositionClampComponent" type="Node2D" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("4_4itts")
+actor = NodePath("..")
+
+[node name="CenterMuzzle" type="Marker2D" parent="."]
+position = Vector2(-1.06773, -17.1778)
+scale = Vector2(146.815, -1.05886)
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("5_4xh80")
+scene = ExtResource("6_kvihq")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("7_lodr7")
+sprite = NodePath("../Anchor")
+
+[node name="ExplosionSpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("5_4xh80")
+scene = ExtResource("8_7dggn")
+
+[node name="DestroyedComponent" type="Node" parent="." node_paths=PackedStringArray("actor", "stats_component", "destroy_effect_spawner_component")]
+script = ExtResource("9_oj5s6")
+actor = NodePath("..")
+stats_component = NodePath("../StatsComponent")
+destroy_effect_spawner_component = NodePath("../ExplosionSpawnerComponent")
+
+[node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_wjj1n")
+bus = &"Sounds"
+script = ExtResource("11_3jap3")
+
+[node name="HitboxComponent" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_a0g0o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(1.00003, 1.90735e-06)
+scale = Vector2(7.36, 7.84)
+shape = SubResource("CircleShape2D_pr1vx")
+debug_color = Color(0.842031, 0.345288, 0.432704, 0.42)

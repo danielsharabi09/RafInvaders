@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cukwn5pnewiyl"]
+
+[ext_resource type="Script" path="res://prizes/coin_generatopr.gd" id="1_ts5s3"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="2_0ed8p"]
+[ext_resource type="PackedScene" path="res://prizes/coin.tscn" id="2_kg5g5"]
+[ext_resource type="Resource" uid="uid://bfkadquef4i33" path="res://game_stats.tres" id="3_gp4qj"]
+
+[node name="CoinGenerator" type="Node2D"]
+script = ExtResource("1_ts5s3")
+CoinScene = ExtResource("2_kg5g5")
+game_stats = ExtResource("3_gp4qj")
+
+[node name="CoinSpawnTimer" type="Timer" parent="."]
+wait_time = 2.499
+autostart = true
+
+[node name="SpawnerComponent" type="Node2D" parent="."]
+script = ExtResource("2_0ed8p")
