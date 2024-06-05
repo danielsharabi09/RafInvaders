@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dv5yqsimnkcnh"]
+[gd_scene load_steps=7 format=3 uid="uid://dv5yqsimnkcnh"]
 
 [ext_resource type="Script" path="res://menus/game_over.gd" id="1_i88yp"]
 [ext_resource type="PackedScene" uid="uid://qbxorymo61wc" path="res://effects/space_background.tscn" id="1_jicsx"]
 [ext_resource type="Resource" uid="uid://bfkadquef4i33" path="res://game_stats.tres" id="2_b3can"]
 [ext_resource type="LabelSettings" uid="uid://lyux8pgux32t" path="res://fonts/title_label_settings.tres" id="2_hgl8r"]
 [ext_resource type="LabelSettings" uid="uid://b4kbn4k1bdngv" path="res://fonts/default_label_settings.tres" id="3_k64km"]
+[ext_resource type="PackedScene" uid="uid://dhbgoj62q28ap" path="res://menus/video_player.tscn" id="6_4qq3p"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -23,6 +24,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -68.0
+offset_right = 3.0
+offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -71,7 +76,12 @@ layout_mode = 2
 
 [node name="MenuLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Press 'space' to Return
-to the Start Menu"
+text = "Prees 'Enter' to continue
+Press 'space' to Start Over"
 label_settings = ExtResource("3_k64km")
 horizontal_alignment = 1
+
+[node name="VideoPlayer" parent="." instance=ExtResource("6_4qq3p")]
+visible = false
+position = Vector2(46, -100)
+scale = Vector2(0.429224, 1.00213)

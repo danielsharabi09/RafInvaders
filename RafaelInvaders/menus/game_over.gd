@@ -19,9 +19,17 @@ func _ready() -> void:
 	highscore_value.text = str(game_stats.highscore)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("Space"):
 		game_stats.score = 0
 		get_tree().change_scene_to_file("res://menus/menu.tscn")
+		
+	if Input.is_action_just_pressed("Enter"):
+		if not $VideoPlayer.is_visible_in_tree():
+			$VideoPlayer.visible = true
+			$VideoPlayer.play()
+			game_stats.score = int(score_value.text)
+		
+		
 
 func load_highscore() -> void:
 	var config = ConfigFile.new()
