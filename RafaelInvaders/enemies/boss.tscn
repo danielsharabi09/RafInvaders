@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2knlbi5n0f48"]
+[gd_scene load_steps=15 format=3 uid="uid://2knlbi5n0f48"]
 
 [ext_resource type="PackedScene" uid="uid://d3fdd3hdc7p1q" path="res://enemies/enemy.tscn" id="1_lhgv5"]
 [ext_resource type="Script" path="res://enemies/boss.gd" id="2_v5ilu"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://components/border_bounce_component.gd" id="7_nck5g"]
 [ext_resource type="Script" path="res://components/state_component.gd" id="8_xvgn2"]
 [ext_resource type="Script" path="res://components/spawner_component.gd" id="9_c4evs"]
+[ext_resource type="AudioStream" uid="uid://b88fyffkgwef1" path="res://assets/1/mouse.mp3" id="10_cgjy3"]
 [ext_resource type="PackedScene" uid="uid://pvkhxs60jkek" path="res://projectiles/pink_enemy_projectile.tscn" id="10_l1qtu"]
+[ext_resource type="Script" path="res://components/variable_pitch_audio_stream_player.gd" id="11_73kyl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n464e"]
 animations = [{
@@ -94,3 +96,8 @@ scene = ExtResource("10_l1qtu")
 unique_name_in_owner = true
 script = ExtResource("5_k4s8c")
 duration = 3.0
+
+[node name="VariablePitchAudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="15"]
+stream = ExtResource("10_cgjy3")
+script = ExtResource("11_73kyl")
+auto_play_with_variance = true

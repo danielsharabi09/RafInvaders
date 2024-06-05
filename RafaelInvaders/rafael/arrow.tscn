@@ -157,4 +157,12 @@ debug_color = Color(0.842031, 0.345288, 0.432704, 0.42)
 wait_time = 7.0
 autostart = true
 
+[node name="Label2" type="Label" parent="."]
+offset_left = -23.0
+offset_top = 15.0
+offset_right = 77.0
+offset_bottom = 38.0
+scale = Vector2(0.301693, 0.268988)
+text = "מערכת חץ"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

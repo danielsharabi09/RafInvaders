@@ -112,6 +112,14 @@ scale = Vector2(7.36, 7.84)
 shape = SubResource("CircleShape2D_pr1vx")
 debug_color = Color(0.842031, 0.345288, 0.432704, 0.42)
 
+[node name="Label" type="Label" parent="HitboxComponent/CollisionShape2D"]
+offset_left = -2.03805
+offset_top = 2.04082
+offset_right = 97.962
+offset_bottom = 25.0408
+scale = Vector2(0.0523514, 0.0557551)
+text = "שרביט קסמים"
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
