@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://cg44fbxw567li"]
+
+[ext_resource type="Script" path="res://projectiles/pink_enemy_projectile.gd" id="1_wk3v4"]
+[ext_resource type="Texture2D" uid="uid://xvgv1nthptsp" path="res://assets/rocket-f1.png" id="2_pe630"]
+[ext_resource type="Texture2D" uid="uid://dlkmg7quj5o0x" path="res://assets/rocket-f2.png" id="3_4texk"]
+[ext_resource type="Texture2D" uid="uid://cm3tw070fn83m" path="res://assets/rocket-f3.png" id="4_2npra"]
+[ext_resource type="Script" path="res://components/hitbox_component.gd" id="5_j4xba"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="6_spqmc"]
+[ext_resource type="Script" path="res://components/scale_component.gd" id="7_scg8r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dr1ru"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pe630")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4texk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2npra")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwi01"]
+size = Vector2(3, 8)
+
+[sub_resource type="Animation" id="Animation_058f4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4s41w"]
+resource_name = "ocillate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-4, 0), Vector2(4, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jpj85"]
+_data = {
+"RESET": SubResource("Animation_058f4"),
+"ocillate": SubResource("Animation_4s41w")
+}
+
+[node name="BossProjectile" type="Node2D"]
+script = ExtResource("1_wk3v4")
+
+[node name="Anchor" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Anchor"]
+position = Vector2(-0.0625, 0.3125)
+scale = Vector2(0.625, 0.895833)
+sprite_frames = SubResource("SpriteFrames_dr1ru")
+autoplay = "default"
+frame = 2
+frame_progress = 0.980298
+
+[node name="HitboxComponent" type="Area2D" parent="Anchor"]
+collision_layer = 0
+script = ExtResource("5_j4xba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/HitboxComponent"]
+shape = SubResource("RectangleShape2D_iwi01")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("6_spqmc")
+actor = NodePath("..")
+velocity = Vector2(0, 30)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(9.53674e-07, -8.47033e-22)
+scale = Vector2(0.4, 0.4)
+
+[node name="ScaleComponent" type="Node" parent="." node_paths=PackedStringArray("sprite")]
+script = ExtResource("7_scg8r")
+sprite = NodePath("../Anchor/AnimatedSprite2D")
+scale_amount = Vector2(2, 2)
+scale_duration = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jpj85")
+}
+autoplay = "ocillate"

@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://2knlbi5n0f48"]
+
+[ext_resource type="PackedScene" uid="uid://d3fdd3hdc7p1q" path="res://enemies/enemy.tscn" id="1_lhgv5"]
+[ext_resource type="Script" path="res://enemies/boss.gd" id="2_v5ilu"]
+[ext_resource type="Texture2D" uid="uid://bmxqhchu8fgok" path="res://assets/sino.png" id="3_glfcb"]
+[ext_resource type="Script" path="res://components/timed_state_componoent.gd" id="5_k4s8c"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="6_y7a2o"]
+[ext_resource type="Script" path="res://components/border_bounce_component.gd" id="7_nck5g"]
+[ext_resource type="Script" path="res://components/state_component.gd" id="8_xvgn2"]
+[ext_resource type="Script" path="res://components/spawner_component.gd" id="9_c4evs"]
+[ext_resource type="PackedScene" uid="uid://pvkhxs60jkek" path="res://projectiles/pink_enemy_projectile.tscn" id="10_l1qtu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n464e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_glfcb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_raykl"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0k70"]
+radius = 6.0
+
+[node name="Boss" instance=ExtResource("1_lhgv5")]
+script = ExtResource("2_v5ilu")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, 0)
+scale = Vector2(0.0392258, 0.0347412)
+sprite_frames = SubResource("SpriteFrames_n464e")
+autoplay = "default"
+frame_progress = 0.794249
+
+[node name="StatsComponent" parent="." index="1"]
+health = 6
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="3"]
+position = Vector2(4.76837e-07, -0.5)
+scale = Vector2(0.6, 0.55)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" index="0"]
+shape = SubResource("CircleShape2D_raykl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+shape = SubResource("CircleShape2D_a0k70")
+
+[node name="ScoreComponent" parent="." index="12"]
+adjust_amount = 20
+
+[node name="States" type="Node" parent="." index="13"]
+
+[node name="MoveDownState" type="Node" parent="States" index="0"]
+unique_name_in_owner = true
+script = ExtResource("5_k4s8c")
+duration = 2.0
+
+[node name="MoveComponent" type="Node" parent="States/MoveDownState" index="0" node_paths=PackedStringArray("actor")]
+script = ExtResource("6_y7a2o")
+actor = NodePath("../../..")
+velocity = Vector2(0, 15)
+
+[node name="MoveSideState" type="Node" parent="States" index="1"]
+unique_name_in_owner = true
+script = ExtResource("5_k4s8c")
+duration = 3.0
+
+[node name="MoveSideComponent" type="Node" parent="States/MoveSideState" index="0" node_paths=PackedStringArray("actor")]
+unique_name_in_owner = true
+script = ExtResource("6_y7a2o")
+actor = NodePath("../../..")
+velocity = Vector2(20, 0)
+
+[node name="BorderBounceComponent" type="Node" parent="States/MoveSideState" index="1" node_paths=PackedStringArray("actor", "move_component")]
+script = ExtResource("7_nck5g")
+actor = NodePath("../../..")
+move_component = NodePath("../MoveSideComponent")
+
+[node name="FireState" type="Node" parent="States" index="2"]
+unique_name_in_owner = true
+script = ExtResource("8_xvgn2")
+
+[node name="ProjectileSpawnerComponent" type="Node2D" parent="States/FireState" index="0"]
+unique_name_in_owner = true
+script = ExtResource("9_c4evs")
+scene = ExtResource("10_l1qtu")
+
+[node name="PauseState" type="Node" parent="States" index="3"]
+unique_name_in_owner = true
+script = ExtResource("5_k4s8c")
+duration = 3.0
