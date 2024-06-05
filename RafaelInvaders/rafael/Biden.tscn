@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://d1qog4yo32x0v"]
+
+[ext_resource type="Script" path="res://rafael/Biden.gd" id="1_84lqt"]
+[ext_resource type="Texture2D" uid="uid://cuistqb44wdg2" path="res://assets/1/all.png" id="2_fs6kd"]
+[ext_resource type="AudioStream" uid="uid://dyxm12ufbtvry" path="res://assets/1/Dont-final.mp3" id="2_xlv17"]
+[ext_resource type="Script" path="res://components/stats_component.gd" id="4_twcf1"]
+[ext_resource type="Script" path="res://components/variable_pitch_audio_stream_player.gd" id="6_ljkbq"]
+[ext_resource type="Script" path="res://components/move_component.gd" id="8_sslsp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptew8"]
+atlas = ExtResource("2_fs6kd")
+region = Rect2(0, 0, 208, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot888"]
+atlas = ExtResource("2_fs6kd")
+region = Rect2(208, 0, 208, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oyj3"]
+atlas = ExtResource("2_fs6kd")
+region = Rect2(416, 0, 208, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3iur"]
+atlas = ExtResource("2_fs6kd")
+region = Rect2(624, 0, 208, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwub5"]
+atlas = ExtResource("2_fs6kd")
+region = Rect2(832, 0, 208, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xouat"]
+atlas = ExtResource("2_fs6kd")
+region = Rect2(1040, 0, 208, 236)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qfcmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptew8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot888")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oyj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3iur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwub5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xouat")
+}],
+"loop": false,
+"name": &"center",
+"speed": 5.0
+}]
+
+[node name="Biden" type="Node2D"]
+script = ExtResource("1_84lqt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, 1)
+scale = Vector2(0.183894, 0.177966)
+sprite_frames = SubResource("SpriteFrames_qfcmv")
+animation = &"center"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_xlv17")
+autoplay = true
+
+[node name="StatsComponent" type="Node" parent="."]
+script = ExtResource("4_twcf1")
+
+[node name="VariablePitchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("6_ljkbq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.037
+autostart = true
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("8_sslsp")
+actor = NodePath("..")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

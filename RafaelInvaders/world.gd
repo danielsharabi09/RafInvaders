@@ -1,9 +1,17 @@
 extends Node2D
 
+signal destoryAll
+
 @export var game_stats: GameStats
 
 @onready var ship: Node2D = $Ship
 @onready var score_label: Label = $ScoreLabel
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_pressed("R"):
+		emit_signal("destoryAll")
+		$EnemyGenerator.destroy_all()
+		print("R Pressed")
 
 func _ready() -> void:
 	randomize()
