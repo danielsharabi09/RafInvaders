@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://components/scale_component.gd" id="4_btq1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwi01"]
-size = Vector2(4.80004, 4.09994)
+size = Vector2(5, 8)
 
 [sub_resource type="Animation" id="Animation_058f4"]
 length = 0.001
@@ -53,7 +53,7 @@ script = ExtResource("1_0mt2y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Anchor"]
 position = Vector2(0.77182, -0.0499678)
-scale = Vector2(0.247576, 0.273329)
+scale = Vector2(0.257901, 0.614925)
 texture = ExtResource("2_jat18")
 
 [node name="HitboxComponent" type="Area2D" parent="Anchor"]
@@ -61,7 +61,8 @@ collision_layer = 0
 script = ExtResource("2_yirco")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/HitboxComponent"]
-position = Vector2(0.599982, -0.0499678)
+position = Vector2(0.5, -1)
+scale = Vector2(1, 0.99027)
 shape = SubResource("RectangleShape2D_iwi01")
 
 [node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("actor")]

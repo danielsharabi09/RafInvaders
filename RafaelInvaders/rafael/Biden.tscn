@@ -62,7 +62,7 @@ script = ExtResource("1_84lqt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.90735e-06, 1)
-scale = Vector2(0.183894, 0.177966)
+scale = Vector2(0.306639, 0.315714)
 sprite_frames = SubResource("SpriteFrames_qfcmv")
 animation = &"center"
 

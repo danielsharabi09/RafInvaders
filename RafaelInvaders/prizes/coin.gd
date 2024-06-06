@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _on_coin_body_entered(body):
 	print("Coin collected!")
+
 	const iron = preload("res://rafael/iron_dome.tscn")
 	const david = preload("res://rafael/david_sling.tscn")
 	const arrow = preload("res://rafael/arrow.tscn")

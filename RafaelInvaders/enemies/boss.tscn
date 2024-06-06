@@ -24,17 +24,18 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_raykl"]
-radius = 7.0
+radius = 16.1245
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a0k70"]
-radius = 6.0
+radius = 16.5529
 
 [node name="Boss" instance=ExtResource("1_lhgv5")]
 script = ExtResource("2_v5ilu")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 position = Vector2(0, 0)
-scale = Vector2(0.0392258, 0.0347412)
+rotation = -0.00279152
+scale = Vector2(0.0462894, 0.0463211)
 sprite_frames = SubResource("SpriteFrames_n464e")
 autoplay = "default"
 frame_progress = 0.794249
@@ -50,6 +51,7 @@ scale = Vector2(0.6, 0.55)
 shape = SubResource("CircleShape2D_raykl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" index="0"]
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_a0k70")
 
 [node name="ScoreComponent" parent="." index="12"]
@@ -99,5 +101,6 @@ duration = 3.0
 
 [node name="VariablePitchAudioStreamPlayer2" type="AudioStreamPlayer" parent="." index="15"]
 stream = ExtResource("10_cgjy3")
+volume_db = -30.0
 script = ExtResource("11_73kyl")
 auto_play_with_variance = true

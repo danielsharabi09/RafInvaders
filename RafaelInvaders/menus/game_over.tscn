@@ -7,7 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://b4kbn4k1bdngv" path="res://fonts/default_label_settings.tres" id="3_k64km"]
 [ext_resource type="Texture2D" uid="uid://bil5pqkp0h2uu" path="res://assets/1/rafSkyIcon.png" id="3_vlpr6"]
 [ext_resource type="PackedScene" uid="uid://dhbgoj62q28ap" path="res://menus/video_player.tscn" id="6_4qq3p"]
-[ext_resource type="Texture2D" uid="uid://bn3kcufl87oje" path="res://assets/advertising.png" id="8_eklca"]
+[ext_resource type="Texture2D" uid="uid://btvhpt7sm0oha" path="res://assets/adver.png" id="8_6b11h"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -83,7 +83,7 @@ layout_mode = 2
 
 [node name="MenuLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Prees 'Enter' to continue"
+text = "Press 'Enter' to continue"
 label_settings = ExtResource("3_k64km")
 horizontal_alignment = 1
 
@@ -99,6 +99,7 @@ position = Vector2(46, -100)
 scale = Vector2(0.429224, 1.00213)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(147.086, 70.7955)
-scale = Vector2(0.0476292, 0.0384384)
-texture = ExtResource("8_eklca")
+texture_filter = 1
+position = Vector2(80.6772, 67.7921)
+scale = Vector2(0.0488854, 0.0385752)
+texture = ExtResource("8_6b11h")

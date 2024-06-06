@@ -14,7 +14,7 @@ extends Enemy
 
 func _ready() -> void:
 	super()
-	self.stats_component.health = 10
+	self.stats_component.health = 20
 	for state in states.get_children():
 		state = state as StateComponent
 		state.disable()

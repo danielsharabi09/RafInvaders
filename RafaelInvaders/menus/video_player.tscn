@@ -19,6 +19,7 @@ offset_right = 156.357
 offset_bottom = 152.0
 scale = Vector2(1.2202, 0.850074)
 stream = ExtResource("2_j2yoj")
+volume_db = 6.1
 expand = true
 script = ExtResource("3_4wc1j")
 
