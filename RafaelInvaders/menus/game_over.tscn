@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv5yqsimnkcnh"]
+[gd_scene load_steps=9 format=3 uid="uid://dv5yqsimnkcnh"]
 
 [ext_resource type="Script" path="res://menus/game_over.gd" id="1_i88yp"]
 [ext_resource type="PackedScene" uid="uid://qbxorymo61wc" path="res://effects/space_background.tscn" id="1_jicsx"]
 [ext_resource type="Resource" uid="uid://bfkadquef4i33" path="res://game_stats.tres" id="2_b3can"]
 [ext_resource type="LabelSettings" uid="uid://lyux8pgux32t" path="res://fonts/title_label_settings.tres" id="2_hgl8r"]
 [ext_resource type="LabelSettings" uid="uid://b4kbn4k1bdngv" path="res://fonts/default_label_settings.tres" id="3_k64km"]
-[ext_resource type="Texture2D" uid="uid://dcnpft64g76j1" path="res://assets/logo-rafsky-removebg-preview (1).png" id="3_kje7r"]
+[ext_resource type="Texture2D" uid="uid://bil5pqkp0h2uu" path="res://assets/1/rafSkyIcon.png" id="3_vlpr6"]
 [ext_resource type="PackedScene" uid="uid://dhbgoj62q28ap" path="res://menus/video_player.tscn" id="6_4qq3p"]
+[ext_resource type="Texture2D" uid="uid://bn3kcufl87oje" path="res://assets/advertising.png" id="8_eklca"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -19,9 +20,9 @@ script = ExtResource("1_i88yp")
 game_stats = ExtResource("2_b3can")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(74.8422, -52.4539)
-scale = Vector2(0.152, 0.208)
-texture = ExtResource("3_kje7r")
+position = Vector2(81, -43)
+scale = Vector2(0.13, 0.144)
+texture = ExtResource("3_vlpr6")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("1_jicsx")]
 
@@ -30,10 +31,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = -68.0
-offset_right = 3.0
-offset_bottom = -68.0
+offset_left = 2.0
+offset_top = -75.0
+offset_right = 2.0
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -82,8 +83,13 @@ layout_mode = 2
 
 [node name="MenuLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Prees 'Enter' to continue
-Press 'space' to Start Over"
+text = "Prees 'Enter' to continue"
+label_settings = ExtResource("3_k64km")
+horizontal_alignment = 1
+
+[node name="MenuLabel2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Press 'space' to Start Over"
 label_settings = ExtResource("3_k64km")
 horizontal_alignment = 1
 
@@ -91,3 +97,8 @@ horizontal_alignment = 1
 visible = false
 position = Vector2(46, -100)
 scale = Vector2(0.429224, 1.00213)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(147.086, 70.7955)
+scale = Vector2(0.0476292, 0.0384384)
+texture = ExtResource("8_eklca")

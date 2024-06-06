@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://effects/space_background.gd" id="1_v4l4t"]
 [ext_resource type="Texture2D" uid="uid://d1bcrtp18agaf" path="res://assets/back33.jpeg" id="2_e5aas"]
 [ext_resource type="Texture2D" uid="uid://bgbmts7byhm1y" path="res://assets/far_stars.png" id="2_vo7q4"]
-[ext_resource type="Texture2D" uid="uid://bwvm86k5874sw" path="res://assets/jers.png" id="3_542cq"]
+[ext_resource type="Texture2D" uid="uid://dm7qyfkp844dq" path="res://assets/JerR.png" id="3_2jupj"]
 [ext_resource type="Texture2D" uid="uid://cko25i13l0mqy" path="res://assets/close_stars.png" id="3_arppk"]
 
 [node name="SpaceBackground" type="ParallaxBackground"]
@@ -25,7 +25,7 @@ stretch_mode = 6
 [node name="Sprite2D" type="Sprite2D" parent="SpaceLayer"]
 position = Vector2(81, 133)
 scale = Vector2(0.282895, 0.275991)
-texture = ExtResource("3_542cq")
+texture = ExtResource("3_2jupj")
 
 [node name="FarStarsLayer" type="ParallaxLayer" parent="."]
 unique_name_in_owner = true

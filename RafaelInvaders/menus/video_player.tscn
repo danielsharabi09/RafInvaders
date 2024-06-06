@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhbgoj62q28ap"]
 
 [ext_resource type="Script" path="res://menus/video_player.gd" id="1_bvii1"]
-[ext_resource type="VideoStream" path="res://assets/10sec.ogv" id="1_vfuck"]
+[ext_resource type="VideoStream" path="res://assets/bid.ogv" id="2_j2yoj"]
 [ext_resource type="Script" path="res://menus/VideoStreamPlayer.gd" id="3_4wc1j"]
 
 [node name="VideoPlayer" type="Node2D"]
@@ -10,14 +10,15 @@ script = ExtResource("1_bvii1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(82, 122)
-scale = Vector2(-0.205032, 2.78918)
+scale = Vector2(-0.189413, 1.14036)
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-offset_left = 1.0
-offset_top = 7.0
-offset_right = 160.0
-offset_bottom = 143.0
-stream = ExtResource("1_vfuck")
+offset_left = -30.6429
+offset_top = 5.0
+offset_right = 156.357
+offset_bottom = 152.0
+scale = Vector2(1.2202, 0.850074)
+stream = ExtResource("2_j2yoj")
 expand = true
 script = ExtResource("3_4wc1j")
 

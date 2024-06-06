@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://qbxorymo61wc" path="res://effects/space_background.tscn" id="1_4uxwx"]
 [ext_resource type="Script" path="res://menus/menu.gd" id="1_wb0oq"]
+[ext_resource type="Texture2D" uid="uid://bil5pqkp0h2uu" path="res://assets/1/rafSkyIcon.png" id="2_d6kqr"]
 [ext_resource type="LabelSettings" uid="uid://lyux8pgux32t" path="res://fonts/title_label_settings.tres" id="2_h61bn"]
-[ext_resource type="Texture2D" uid="uid://dcnpft64g76j1" path="res://assets/logo-rafsky-removebg-preview (1).png" id="2_ypcpl"]
 [ext_resource type="LabelSettings" uid="uid://b4kbn4k1bdngv" path="res://fonts/default_label_settings.tres" id="3_vfbob"]
 
 [node name="Menu" type="Control"]
@@ -18,7 +18,7 @@ script = ExtResource("1_wb0oq")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(78.8915, 58.1969)
 scale = Vector2(0.196784, 0.21366)
-texture = ExtResource("2_ypcpl")
+texture = ExtResource("2_d6kqr")
 
 [node name="SpaceBackground" parent="." instance=ExtResource("1_4uxwx")]
 
@@ -27,6 +27,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
