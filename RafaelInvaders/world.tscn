@@ -6,13 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://bkgijybqxmxd8" path="res://player_ship/ship.tscn" id="3_23gr4"]
 [ext_resource type="PackedScene" uid="uid://bjhmek36bubm5" path="res://enemies/enemy_generator.tscn" id="3_s2tto"]
 [ext_resource type="LabelSettings" uid="uid://b4kbn4k1bdngv" path="res://fonts/default_label_settings.tres" id="5_2yrt4"]
+[ext_resource type="PackedScene" uid="uid://bfolelut5k2k5" path="res://prizes/power_up_generator.tscn" id="8_ckc1x"]
 [ext_resource type="PackedScene" uid="uid://cukwn5pnewiyl" path="res://prizes/coin_generatopr.tscn" id="8_suw3r"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ijbud"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_w8tcu")
 game_stats = ExtResource("2_6eays")
+
+[node name="Ship" parent="." instance=ExtResource("3_23gr4")]
+position = Vector2(79, 203)
 
 [node name="SpaceBackground" parent="." instance=ExtResource("2_r2wj6")]
 
@@ -26,11 +28,6 @@ label_settings = ExtResource("5_2yrt4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Ship" parent="." instance=ExtResource("3_23gr4")]
-position = Vector2(79, 203)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ship"]
-position = Vector2(-2, 2)
-shape = SubResource("CircleShape2D_ijbud")
-
 [node name="CoinGenerator" parent="." instance=ExtResource("8_suw3r")]
+
+[node name="PowerUpGenerator" parent="." instance=ExtResource("8_ckc1x")]

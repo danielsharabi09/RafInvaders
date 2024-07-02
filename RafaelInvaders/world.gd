@@ -14,7 +14,7 @@ func _input(event: InputEvent) -> void:
 		print("R Pressed")
 
 func _ready() -> void:
-	randomize()
+	#randomize()
 	update_score_label(game_stats.score)
 	game_stats.score_changed.connect(update_score_label)
 	
