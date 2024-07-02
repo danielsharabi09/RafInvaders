@@ -13,9 +13,6 @@
 script = ExtResource("1_w8tcu")
 game_stats = ExtResource("2_6eays")
 
-[node name="Ship" parent="." instance=ExtResource("3_23gr4")]
-position = Vector2(79, 203)
-
 [node name="SpaceBackground" parent="." instance=ExtResource("2_r2wj6")]
 
 [node name="EnemyGenerator" parent="." instance=ExtResource("3_s2tto")]
@@ -31,3 +28,6 @@ vertical_alignment = 1
 [node name="CoinGenerator" parent="." instance=ExtResource("8_suw3r")]
 
 [node name="PowerUpGenerator" parent="." instance=ExtResource("8_ckc1x")]
+
+[node name="Ship" parent="." instance=ExtResource("3_23gr4")]
+position = Vector2(80.673, 179.499)

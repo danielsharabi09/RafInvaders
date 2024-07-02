@@ -1,10 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://dyeabu4wg6cud"]
+[gd_scene load_steps=25 format=3 uid="uid://dyeabu4wg6cud"]
 
 [ext_resource type="Script" path="res://prizes/power_up.gd" id="1_wr65o"]
 [ext_resource type="Texture2D" uid="uid://nmkoex7trpbp" path="res://assets/newnewassets/coin.png" id="2_bujpp"]
-[ext_resource type="Texture2D" uid="uid://cw6g7m0urk8w1" path="res://assets/newnewassets/fruit.png" id="3_0avje"]
+[ext_resource type="Texture2D" uid="uid://cwtfvw5h6cjmk" path="res://assets/Powerups/powerup01_1.png" id="3_g35l6"]
+[ext_resource type="Texture2D" uid="uid://b70pvpj20qvou" path="res://assets/Powerups/powerup01_2.png" id="4_e8lgr"]
 [ext_resource type="Script" path="res://components/stats_component.gd" id="4_rhoyy"]
 [ext_resource type="Script" path="res://components/move_component.gd" id="5_c118d"]
+[ext_resource type="Texture2D" uid="uid://c3o7fw0r0uuxr" path="res://assets/Powerups/powerup01_3.png" id="5_f5p1n"]
+[ext_resource type="Texture2D" uid="uid://yqis18g6p5ko" path="res://assets/Powerups/powerup01_4.png" id="6_lujb4"]
+[ext_resource type="Texture2D" uid="uid://c6pycramaltcw" path="res://assets/Powerups/powerup01_5.png" id="7_rxi1g"]
+[ext_resource type="Texture2D" uid="uid://cdg4n2hdijs1k" path="res://assets/Powerups/powerup01_6.png" id="8_b2ge8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmry6"]
 atlas = ExtResource("2_bujpp")
@@ -54,10 +59,6 @@ region = Rect2(176, 0, 16, 16)
 atlas = ExtResource("2_bujpp")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dd1n4"]
-atlas = ExtResource("3_0avje")
-region = Rect2(0, 48, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_xxdpr"]
 animations = [{
 "frames": [{
@@ -103,7 +104,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dd1n4")
+"texture": ExtResource("3_g35l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e8lgr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f5p1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lujb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rxi1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b2ge8")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -119,15 +135,14 @@ script = ExtResource("1_wr65o")
 [node name="Coin" type="Area2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin"]
-position = Vector2(1.19209e-07, -1)
-scale = Vector2(0.415441, 0.3375)
+rotation = -0.0118173
+scale = Vector2(0.145666, 0.137849)
 sprite_frames = SubResource("SpriteFrames_xxdpr")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.654573
+frame_progress = 0.701333
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
-position = Vector2(0, -1)
 scale = Vector2(0.0703125, 0.0644531)
 shape = SubResource("CircleShape2D_ycfb2")
 
@@ -139,4 +154,5 @@ script = ExtResource("5_c118d")
 actor = NodePath("..")
 velocity = Vector2(0, 40)
 
+[connection signal="area_entered" from="Coin" to="." method="_on_coin_area_entered"]
 [connection signal="body_entered" from="Coin" to="." method="_on_coin_body_entered"]

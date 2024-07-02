@@ -202,4 +202,5 @@ script = ExtResource("4_cilwo")
 actor = NodePath("..")
 velocity = Vector2(0, 40)
 
+[connection signal="area_entered" from="Coin" to="." method="_on_coin_area_entered"]
 [connection signal="body_entered" from="Coin" to="." method="_on_coin_body_entered"]

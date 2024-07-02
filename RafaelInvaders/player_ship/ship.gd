@@ -87,7 +87,5 @@ func power_up() -> void:
 	isPower = true
 	power_up_timer.start(15)
 	
-
-
 func _on_power_up_timer_timeout():
 	isPower = false
